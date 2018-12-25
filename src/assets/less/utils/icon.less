@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+//-------------------
+// fonticon
+//-------------------
+@font-face {
+  font-family: "iconfont";
+}
+
+.icon,
+[class^="icon-"] {
+  
+}
+
+.icon-pulse {
+  animation: rotate-spin 1s infinite steps(7);
+}
+
+.icon-spin {
+  animation: rotate-spin 2s infinite linear;
+}
+
+@keyframes rotate-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+.icon-add:before { content: "\e629"; }
