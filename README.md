@@ -74,16 +74,18 @@ vue ui   //启动图形化界面
 
 
 ### axios
-封装后的axios，无需每个页面都axios，只需要import直接调用对应的接口
+封装后的axios，更优雅的使用axios
 ##### 示例（@/axios/api/user.js文件下的login接口）
-`import { login } from 'api/user'
+首先页面引用文件
+`import { login } from 'api/user'`
 
-login({
-   userid: 1234
+调用login()
+`login({
+    userid: 1234
 }).then(res => {
    console.log(res)
-})`
-
+})
+`
 
 ### router
 模块化router，对一级以下的路由`(routes.children)`进行分类管理
