@@ -1,4 +1,5 @@
 const path = require('path')
+const resolve = (dir) => path.join(__dirname, dir)
 
 module.exports = {
   // 项目部署的基础路径
@@ -8,7 +9,7 @@ module.exports = {
   // 指定子路径。比如，如果你的应用部署在
   // https://www.foobar.com/my-app/
   // 那么将这个值改为 `/my-app/`
-  baseUrl: './',
+  publicPath: './',
 
   // 将构建好的文件输出到哪里
   outputDir: 'dist',
@@ -36,7 +37,17 @@ module.exports = {
 
   // 调整内部的 webpack 配置。
   // 查阅 https://github.com/vuejs/vue-docs-zh-cn/blob/master/vue-cli/webpack.md
-  chainWebpack: () => {},
+  chainWebpack: config => {
+    config.resolve.alias
+      .set('@', resolve('src'))
+      .set('components', resolve('src/components'))
+      .set('assets', resolve('src/assets'))
+      .set('api', resolve('src/axios/api'))
+      .set('libs', resolve('src/libs'))
+
+    config.output.chunkFilename(`js/[name].[chunkhash:8].js`)
+  },
+  
   configureWebpack: () => {
     if (process.env.NODE_ENV === 'production') {
       // 为生产环境修改配置...
